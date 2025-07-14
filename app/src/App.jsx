@@ -23,13 +23,12 @@ const App = () => {
     setFiletred(filter);
   };
 
-function handlerClick(category) {
-  const result = data.filter((item) =>
-    item.type?.toLowerCase() === category.toLowerCase()
-  );
-  setFiletred(result);
-}
-
+  function handlerClick(category) {
+    const result = data.filter(
+      (item) => item.type?.toLowerCase() === category.toLowerCase()
+    );
+    setFiletred(result);
+  }
 
   useEffect(() => {
     const foodItemsData = async () => {
@@ -37,7 +36,7 @@ function handlerClick(category) {
       try {
         const response = await fetch(BASE_URL);
         const json = await response.json();
-    console.log("JSON:", json);
+        console.log("JSON:", json);
         setData(json);
         setFiletred(json);
         setLoading(false);
@@ -81,7 +80,9 @@ function handlerClick(category) {
 export default App;
 
 const Container = styled.div`
-  height: 100vh;
+  min-height: 100vh;
+    overflow-y: auto;
+
 `;
 const TopContainer = styled.div`
   min-height: 140px;
@@ -94,7 +95,7 @@ const TopContainer = styled.div`
     border: none;
     outline: 1px solid red;
     height: 40px;
-    width: 285px;
+    width: 350px;
     border-radius: 10px;
     background-color: transparent;
     padding: 10px;
@@ -104,6 +105,63 @@ const TopContainer = styled.div`
   input::placeholder {
     color: white;
   }
+
+  @media (max-width: 566px) {
+        display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+
+    
+    .search input {
+      border: none;
+      outline: 1px solid red;
+      height: 40px;
+      width: 320px;
+      border-radius: 10px;
+      background-color: transparent;
+      padding: 10px;
+      color: white;
+    }
+  }
+
+  @media (min-width: 567px) and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+
+    .search input {
+      border: none;
+      outline: 1px solid red;
+      height: 40px;
+      width: 500px;
+      border-radius: 10px;
+      background-color: transparent;
+      padding: 10px;
+      color: white;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 991px) {
+    .search input {
+      border: none;
+      outline: 1px solid red;
+      height: 40px;
+      width: 350px;
+      border-radius: 10px;
+      background-color: transparent;
+      padding: 10px;
+      color: white;
+    }
+  }
+            @media (min-width: 992px) and (max-width: 1199px) {
+              .search input {
+                      width: 350px;
+
+              }
+            }
+
 `;
 
 const FilterContainer = styled.div`

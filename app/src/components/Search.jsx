@@ -26,12 +26,21 @@ const SearchResult = ({ data }) => {
 export default SearchResult;
 
 const FoodCardContainer = styled.div`
-  height: calc(100vh - 190px);
+  min-height: calc(100vh - 190px);
+  overflow-y: auto;
   background-image: url("/bgImage.png");
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px 0;
+
+
+
+  @media(max-width: 1280px) {
+    align-items: flex-start;
+    min-height: 100vh;
+  }
 `;
 
 const FoodCards = styled.div`
@@ -39,8 +48,20 @@ const FoodCards = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  height: 336px;
   max-width: 1060px;
+  height: auto;
+
+  @media (max-width: 568px) {
+    height: 100%;
+    margin-top: 30px;
+  }
+  @media (min-width: 569px) and (max-width: 768px) {
+  }
+
+  @media (min-width: 769px) and (max-width: 991px) {
+    display: flex;
+    align-items: flex-start;
+  }
 `;
 
 const FoodCard = styled.div`
@@ -67,5 +88,25 @@ const FoodCard = styled.div`
   .priceBtn {
     align-self: flex-end;
     margin-right: 20px;
+  }
+
+  @media (max-width: 568px) {
+    flex: 0 0 400px;
+    height: 167px;
+  }
+
+  @media (min-width: 569px) and (max-width: 768px) {
+    flex: 0 0 500px;
+    height: 167px;
+  }
+
+  @media (min-width: 769px) and (max-width: 991px) {
+    flex: 0 0 350px;
+    height: 167px;
+  }
+
+  @media (min-width: 992px) and (max-width: 1199px) {
+    flex: 0 0 400px;
+    height: 167px;
   }
 `;
